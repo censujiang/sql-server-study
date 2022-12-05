@@ -1,0 +1,5 @@
+USE 教务系统;
+GO
+
+ALTER TABLE 成绩表
+ADD 序号 INT IDENTITY(1,1);

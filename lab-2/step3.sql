@@ -1,0 +1,15 @@
+USE 教务系统;
+GO
+
+CREATE TABLE 成绩表 (
+    学号 INT,
+    课程名 VARCHAR(50),
+    成绩 INT,
+    PRIMARY KEY (学号, 课程名)
+);
+
+INSERT INTO 成绩表 VALUES (201913001, '数据库', 80);
+INSERT INTO 成绩表 VALUES (201913002, '数据库', 88);
+INSERT INTO 成绩表 VALUES (201913003, 'C++', 55);
+INSERT INTO 成绩表 VALUES (201913004, 'C++', 90);
+INSERT INTO 成绩表 VALUES (201913005, 'C++', 96);
