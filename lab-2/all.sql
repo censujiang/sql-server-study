@@ -1,0 +1,50 @@
+USE 教务系统;
+GO
+
+CREATE TABLE 学生表 (
+    学号 INT PRIMARY KEY,
+    姓名 VARCHAR(50),
+    性别 VARCHAR(10),
+    电话 VARCHAR(20),
+    EMAIL VARCHAR(100)
+);
+
+INSERT INTO 学生表 VALUES (201913001, '李红', '女', '66113456', 'lihong@163.com');
+INSERT INTO 学生表 VALUES (201913002, '张勇', '男', '66111234', 'zhangy@21.cn.com');
+INSERT INTO 学生表 VALUES (201913003, '刘芳', '女', '65678902', 'liufang@sina.com');
+INSERT INTO 学生表 VALUES (201913004, '刘丽', '女', '62345678', 'liuli@163.com');
+INSERT INTO 学生表 VALUES (201913005, '林冲', '男', '68765432', 'linchong@163.com');
+
+CREATE TABLE 成绩表 (
+    学号 INT,
+    课程名 VARCHAR(50),
+    成绩 INT,
+    PRIMARY KEY (学号, 课程名)
+);
+
+INSERT INTO 成绩表 VALUES (201913001, '数据库', 80);
+INSERT INTO 成绩表 VALUES (201913002, '数据库', 88);
+INSERT INTO 成绩表 VALUES (201913003, 'C++', 55);
+INSERT INTO 成绩表 VALUES (201913004, 'C++', 90);
+INSERT INTO 成绩表 VALUES (201913005, 'C++', 96);
+
+ALTER TABLE 学生表 ADD PRIMARY KEY (学号);
+ALTER TABLE 学生表 ALTER COLUMN 姓名 VARCHAR(50) NOT NULL ;
+ALTER TABLE 学生表 ADD UNIQUE (EMAIL);
+ALTER TABLE 学生表 ADD DEFAULT '男' FOR 性别;
+ALTER TABLE 成绩表 ADD PRIMARY KEY (学号, 课程名);
+ALTER TABLE 成绩表 ADD FOREIGN KEY (学号) REFERENCES 学生表 (学号);
+ALTER TABLE 成绩表 ALTER COLUMN 课程名 VARCHAR(50) NOT NULL;
+ALTER TABLE 成绩表 ADD CHECK (成绩 BETWEEN 0 AND 100);
+
+INSERT INTO 学生表 (学号, 姓名, 性别, 电话, EMAIL)
+VALUES (202255666, '江江', '武装直升机', 66666666, 'test@test.com');
+
+INSERT INTO 成绩表 (学号, 课程名, 成绩)
+VALUES (202255666, 'Vue', 99);
+
+ALTER TABLE 成绩表
+ADD 序号 INT IDENTITY(1,1);
+
+SELECT * FROM 学生表;
+SELECT * FROM 成绩表;
