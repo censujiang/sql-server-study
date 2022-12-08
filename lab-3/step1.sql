@@ -1,0 +1,1 @@
+create database 教务系统;
